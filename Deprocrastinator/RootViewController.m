@@ -7,6 +7,7 @@
 //
 
 #import "RootViewController.h"
+#import "Task.h"
 
 @interface RootViewController ()<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
@@ -14,6 +15,7 @@
 @property NSMutableArray *tasksArray;
 @property (weak, nonatomic) IBOutlet UITableView *tasksTableView;
 @property NSIndexPath *deleteIndexPath;
+@property Task* tasks;
 
 @end
 
@@ -21,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tasks = [[Task alloc] init];
 
     self.tasksArray = [NSMutableArray new];
 }
@@ -35,16 +38,22 @@
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *myCell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
+    self.tasks = [self.tasksArray objectAtIndex:indexPath.row];
 
-        myCell.textLabel.text = [self.tasksArray objectAtIndex:indexPath.row];
-        return myCell;
+
+    myCell.textLabel.text = self.tasks.tasksName;
+    myCell.textLabel.textColor = self.tasks.tasksColor;
+    return myCell;
 }
 
 
 - (IBAction)onAddButtonPressed:(id)sender
 {
+    self.tasks = [[Task alloc] init];
+    self.tasks.tasksName = self.taskTextField.text;
+    self.tasks.tasksColor = [UIColor blackColor];
 
-    [self.tasksArray addObject:self.taskTextField.text];
+    [self.tasksArray addObject:self.tasks];
     [self.tasksTableView reloadData];
     self.taskTextField.text = nil;
     [self.taskTextField resignFirstResponder];
@@ -53,8 +62,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tasksTableView cellForRowAtIndexPath:indexPath];
-    cell.textLabel.textColor = [UIColor greenColor];
+    //UITableViewCell *cell = [self.tasksTableView cellForRowAtIndexPath:indexPath];
+    //cell.textLabel.textColor = [UIColor greenColor];
+    self.tasks = [self.tasksArray objectAtIndex:indexPath.row];
+    self.tasks.tasksColor = [UIColor greenColor];
+    self.tasks = [[Task alloc] init];
+    [self.tasksTableView reloadData];
+
+
+
 }
 
 
@@ -102,30 +118,30 @@
 {
     CGPoint touchPoint = [gesture locationInView:self.tasksTableView];
     NSIndexPath *indexPath = [self.tasksTableView indexPathForRowAtPoint:touchPoint];
-    UITableViewCell *swipedCell = [self.tasksTableView cellForRowAtIndexPath:indexPath];
+    self.tasks = [self.tasksArray objectAtIndex:indexPath.row];
 
     if (gesture.direction == UISwipeGestureRecognizerDirectionRight)
     {
         NSLog(@"GoingRight");
-        if(swipedCell.textLabel.textColor == [UIColor blackColor])
+        if(self.tasks.tasksColor == [UIColor blackColor])
         {
-               swipedCell.textLabel.textColor = [UIColor greenColor];
+               self.tasks.tasksColor = [UIColor greenColor];
 
         }
-        else if (swipedCell.textLabel.textColor == [UIColor greenColor])
+        else if (self.tasks.tasksColor == [UIColor greenColor])
         {
-            swipedCell.textLabel.textColor = [UIColor yellowColor];
+            self.tasks.tasksColor = [UIColor yellowColor];
         }
-        else if (swipedCell.textLabel.textColor == [UIColor yellowColor])
+        else if (self.tasks.tasksColor == [UIColor yellowColor])
         {
-            swipedCell.textLabel.textColor = [UIColor redColor];
+            self.tasks.tasksColor = [UIColor redColor];
         }
-        else if (swipedCell.textLabel.textColor == [UIColor redColor])
+        else if (self.tasks.tasksColor == [UIColor redColor])
         {
-            swipedCell.textLabel.textColor = [UIColor blackColor];
+            self.tasks.tasksColor = [UIColor blackColor];
         }
     }
-
+    [self.tasksTableView reloadData];
 }
 
 

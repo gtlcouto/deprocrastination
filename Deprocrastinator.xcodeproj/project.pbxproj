@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35F898931A658C34008116B6 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F898921A658C34008116B6 /* Task.m */; };
 		94E8B85D1A647DC400675F96 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E8B85C1A647DC400675F96 /* main.m */; };
 		94E8B8601A647DC400675F96 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E8B85F1A647DC400675F96 /* AppDelegate.m */; };
 		94E8B8631A647DC400675F96 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E8B8621A647DC400675F96 /* RootViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		35F898911A658C34008116B6 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		35F898921A658C34008116B6 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		94E8B8571A647DC400675F96 /* Deprocrastinator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deprocrastinator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94E8B85B1A647DC400675F96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94E8B85C1A647DC400675F96 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -98,6 +101,8 @@
 			children = (
 				94E8B85B1A647DC400675F96 /* Info.plist */,
 				94E8B85C1A647DC400675F96 /* main.m */,
+				35F898911A658C34008116B6 /* Task.h */,
+				35F898921A658C34008116B6 /* Task.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35F898931A658C34008116B6 /* Task.m in Sources */,
 				94E8B8631A647DC400675F96 /* RootViewController.m in Sources */,
 				94E8B8601A647DC400675F96 /* AppDelegate.m in Sources */,
 				94E8B85D1A647DC400675F96 /* main.m in Sources */,
@@ -414,6 +420,7 @@
 				94E8B87C1A647DC400675F96 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		94E8B87D1A647DC400675F96 /* Build configuration list for PBXNativeTarget "DeprocrastinatorTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +429,7 @@
 				94E8B87F1A647DC400675F96 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
